@@ -7,7 +7,7 @@ function Account(props) {
 
     return(
         <div>
-            <FriendForm/>
+            
             <FriendsList/>
         </div>
     )

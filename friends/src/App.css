@@ -29,3 +29,19 @@ nav {
   width: 30%;
   margin: 0 auto;
 }
+
+.friendsList {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.friendCard {
+  width: 45%;
+  border: 1px solid red;
+  box-shadow: 2px 2px;
+  padding: 10px 0;
+  margin: 10px 0;
+}

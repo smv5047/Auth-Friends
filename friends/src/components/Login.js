@@ -19,12 +19,12 @@ function Login(props) {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        setIsLoading(true)
+       
         api()
             .post("/api/login", data)
             .then(res => {
-                console.log(res)
-                localStorage.setItem("token", res.data.token)
+                console.log(res.data.payload)
+                localStorage.setItem("token", res.data.payload)
                 props.history.push("/account")
             })
             .catch(err => {

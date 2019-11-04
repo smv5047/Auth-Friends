@@ -1,10 +1,13 @@
-import React, {useState }from "react"
+import React, { useState }from "react"
+import api from "../utils/api"
+
 
 function Login(props) {
-    const [data, setData] = useState=({
+    const [data, setData] = useState({
         username: "",
         password: ""
     })
+    const [isLoading, setIsLoading] = useState(false)
 
 
     const handleChange =(e) =>{
@@ -16,6 +19,17 @@ function Login(props) {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        setIsLoading(true)
+        api()
+            .post("/api/login", data)
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("token", res.data.token)
+                props.history.push("/account")
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
 
@@ -29,6 +43,7 @@ function Login(props) {
                 value={data.username}
                 onChange={handleChange}
                 />
+            <br/>
             <input
                 type="password"
                 name="password"
@@ -36,6 +51,8 @@ function Login(props) {
                 value={data.password}
                 onChange={handleChange}
                 />
+            <br/>
+            <br/>
             <button type="submit">Login</button>
             </form>
         </div>

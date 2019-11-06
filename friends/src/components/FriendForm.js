@@ -17,7 +17,14 @@ function FriendForm(props) {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         props.addFriends(e,friend)
+        setFriend({
+            name: '',
+            age: '',
+            email: ''
+        })
+
     }
 
     return (
